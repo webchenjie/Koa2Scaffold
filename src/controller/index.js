@@ -1,4 +1,5 @@
 module.exports = {
-  ...require('./users'),
-  ...require('./upload'),
+  // ...require('./users-mysql'),
+  ...require('./users-sequelize'),
+  ...require('./upload')
 }

@@ -1,3 +1,4 @@
 module.exports = {
-  ...require('./mysql')
+  ...require('./mysql'),
+  ...require('./sequelize')
 }

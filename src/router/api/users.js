@@ -1,13 +1,13 @@
 const KoaRouter = require('koa-router')
-const { apiPrefix } = require('../config')
-const { SuccessModel, ErrorModel } = require('../model')
+const { apiPrefix } = require('../../config')
+const { SuccessModel, ErrorModel } = require('../../model')
 const {
   handleGetUserList,
   handleGetUserDetail,
   handleAddUser,
   handleDelUser,
   handleSetUser
-} = require('../controller')
+} = require('../../controller')
 
 const router = new KoaRouter()
 

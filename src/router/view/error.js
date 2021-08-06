@@ -1,13 +1,7 @@
 const KoaRouter = require('koa-router')
+const { viewPrefix } = require('../../config')
 
 const router = new KoaRouter()
-
-// 首页
-router.get('/', async ctx => {
-  await ctx.render('index', {
-    title: 'Koa2'
-  })
-})
 
 // 500
 router.get('/500', async ctx => {

@@ -1,7 +1,7 @@
 const KoaRouter = require('koa-router')
-const { apiPrefix } = require('../config')
-const { SuccessModel, ErrorModel } = require('../model')
-const { handleStreamFile } = require('../controller')
+const { apiPrefix } = require('../../config')
+const { SuccessModel, ErrorModel } = require('../../model')
+const { handleStreamFile } = require('../../controller')
 
 const router = new KoaRouter()
 
