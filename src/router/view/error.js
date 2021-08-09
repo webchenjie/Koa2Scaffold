@@ -1,5 +1,4 @@
 const KoaRouter = require('koa-router')
-const { viewPrefix } = require('../../config')
 
 const router = new KoaRouter()
 

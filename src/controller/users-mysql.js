@@ -2,7 +2,7 @@ const { handleMysqlExec } = require('../db')
 
 // 获取用户列表
 const handleGetUserList = async id => {
-  let sql = `select * from users where 1=1 `
+  let sql = `select * from users where 1=1 ` // 后面有个空格
   if (id) {
     sql += `and id='${id}'`
   }

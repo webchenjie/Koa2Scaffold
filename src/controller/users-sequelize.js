@@ -1,55 +1,62 @@
 const { handleMysqlExec } = require('../db')
-const { User } = require('../db')
+const { Users } = require('../db')
 
-// // 获取用户列表 mysql
-// const handleGetUserList = async id => {
-//   let sql = `select * from users where 1=1 `
-//   if (id) {
-//     sql += `and id='${id}'`
-//   }
-//   return await handleMysqlExec(sql)
-// }
-
-// 获取用户列表 sequelize
+// 获取用户列表
 const handleGetUserList = async id => {
-  const zhangsan = await User.findOne({
-    where: { id }
-  })
-  return zhangsan
+  let data
+  if (id) {
+    data = await Users.findAll({
+      where: {
+        id
+      }
+    })
+  } else {
+    data = await Users.findAll()
+  }
+  return data
 }
 
 // 获取用户详情
 const handleGetUserDetail = async id => {
-  const sql = `select * from users where id='${id}'`
-  const [TextRow] = await handleMysqlExec(sql)
-  return TextRow
+  const [data] = await Users.findAll({
+    where: { id: id ? id : '' }
+  })
+  console.log(data)
+  return data
 }
 
 // 添加用户
 const handleAddUser = async ({ name, sex, age }) => {
-  const sql = `insert into users (name, sex, age) values ('${name}', '${sex}', '${age}')`
-  const { insertId } = await handleMysqlExec(sql)
-  return insertId
+  const { dataValues: { id }} = await Users.create({
+    name,
+    sex,
+    age
+  })
+  return id
 }
 
 // 删除用户
-const handleDelUser = async (id) => {
-  const sql = `delete from users where id='${id}'`
-  const { affectedRows } = await handleMysqlExec(sql)
-  if (affectedRows > 0) {
-    return true
-  }
-  return false
+const handleDelUser = async id => {
+  const data = await Users.destroy({
+    where: {
+      id
+    }
+  })
+  return data
 }
 
 // 修改用户
 const handleSetUser = async ({ id, name, sex, age }) => {
-  const sql = `update users set name='${name}', sex='${sex}', age='${age}' where id='${id}'`
-  const { affectedRows } = await handleMysqlExec(sql)
-  if (affectedRows > 0) {
-    return true
-  }
-  return false
+  const data = await Users.update({
+    name,
+    sex,
+    age
+  }, {
+    where: {
+      id
+    }
+  })
+  return data
 }
 
 module.exports = {
