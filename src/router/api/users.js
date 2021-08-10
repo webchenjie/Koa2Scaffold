@@ -1,6 +1,8 @@
 const KoaRouter = require('koa-router')
+const Joi = require('joi')
 const { apiPrefix } = require('../../config')
 const { SuccessModel, ErrorModel } = require('../../model')
+const { validateParamsMiddleware } = require('../../middleware')
 const {
   handleGetUserList,
   handleGetUserDetail,
@@ -14,8 +16,11 @@ const router = new KoaRouter()
 router.prefix(`${apiPrefix}/users`)
 
 // 获取用户列表
-router.get('/getList', async ctx => {
-  const { id } = ctx.query
+const getListSchema = Joi.object({
+  id: Joi.required().error(new Error('id 不可为空~'))
+})
+router.get('/getList', validateParamsMiddleware(getListSchema), async ctx => {
+  const { id } = ctx.params
   const data = await handleGetUserList(id)
   ctx.body = new SuccessModel({
     data,
@@ -24,14 +29,11 @@ router.get('/getList', async ctx => {
 })
 
 // 获取用户详情
-router.get('/getDetail', async ctx => {
-  const { id } = ctx.query
-  if (!id) {
-    ctx.body = new ErrorModel({
-      msg: `id 不可为空噢~`
-    })
-    return
-  }
+const getDetailSchema = Joi.object({
+  id: Joi.required().error(new Error('id 不可为空~'))
+})
+router.get('/getDetail', validateParamsMiddleware(getDetailSchema), async ctx => {
+  const { id } = ctx.params
   const data = await handleGetUserDetail(id)
   ctx.body = new SuccessModel({
     data,
@@ -39,14 +41,14 @@ router.get('/getDetail', async ctx => {
   })
 })
 
-router.post('/addUser', async ctx => {
-  const { name, sex, age } = ctx.request.body
-  if (!name || !sex || !age) {
-    ctx.body = new ErrorModel({
-      msg: `name、sex、age不可为空噢~`
-    })
-    return
-  }
+// 添加用户
+const addUserSchema = Joi.object({
+  name: Joi.required().error(new Error('name 不可为空~')),
+  sex: Joi.required().error(new Error('sex 不可为空~')),
+  age: Joi.required().error(new Error('age 不可为空~'))
+})
+router.post('/addUser', validateParamsMiddleware(addUserSchema), async ctx => {
+  const { name, sex, age } = ctx.params
   const data = await handleAddUser({ name, sex, age })
   ctx.body = new SuccessModel({
     data,
@@ -54,14 +56,12 @@ router.post('/addUser', async ctx => {
   })
 })
 
-router.post('/delUser', async ctx => {
-  const { id } = ctx.request.body
-  if (!id) {
-    ctx.body = new ErrorModel({
-      msg: `id 不可为空噢~`
-    })
-    return
-  }
+// 删除用户
+const delUserSchema = Joi.object({
+  id: Joi.required().error(new Error('id 不可为空~'))
+})
+router.post('/delUser', validateParamsMiddleware(delUserSchema), async ctx => {
+  const { id } = ctx.params
   const data = await handleDelUser(id)
   if (data) {
     ctx.body = new SuccessModel({
@@ -75,14 +75,15 @@ router.post('/delUser', async ctx => {
   }
 })
 
-router.post('/setUser', async ctx => {
-  const { id, name, sex, age } = ctx.request.body
-  if (!id || !name || !sex || !age) {
-    ctx.body = new ErrorModel({
-      msg: `id、name、sex、age不可为空噢~`
-    })
-    return
-  }
+// 修改用户
+const setUserSchema = Joi.object({
+  id: Joi.required().error(new Error('id 不可为空~')),
+  name: Joi.required().error(new Error('name 不可为空~')),
+  sex: Joi.required().error(new Error('sex 不可为空~')),
+  age: Joi.required().error(new Error('age 不可为空~'))
+})
+router.post('/setUser', validateParamsMiddleware(setUserSchema), async ctx => {
+  const { id, name, sex, age } = ctx.params
   const data = await handleSetUser({ id, name, sex, age })
   if (data) {
     ctx.body = new SuccessModel({

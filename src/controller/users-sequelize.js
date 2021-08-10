@@ -1,4 +1,3 @@
-const { handleMysqlExec } = require('../db')
 const { Users } = require('../db')
 
 // 获取用户列表

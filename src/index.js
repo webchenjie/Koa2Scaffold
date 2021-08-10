@@ -12,6 +12,7 @@ const koaOnerror = require('koa-onerror')
 const day = require('dayjs')
 const path = require('path')
 const router = require('./router')
+const { mergeParamsMiddleware } = require('./middleware')
 
 const app = new Koa()
 
@@ -34,6 +35,7 @@ const koaMiddleware = koaCompose([
 koaOnerror(app) // 自动添加错误响应状态码和响应头
 
 app.use(koaMiddleware)
+app.use(mergeParamsMiddleware)
 app.use(router())
 
 // 错误监听

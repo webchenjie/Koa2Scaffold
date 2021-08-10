@@ -13,6 +13,7 @@
     "dayjs": "^1.10.6",
     "debug": "^4.1.1",
     "ejs": "~2.3.3",
+    "joi": "^17.4.2",
     "koa": "^2.7.0",
     "koa-body": "^4.2.0",
     "koa-combine-routers": "^4.0.2",
@@ -27,7 +28,8 @@
     "koa-views": "^7.0.1",
     "mysql2": "^2.2.5",
     "pm2": "^5.1.0",
-    "sequelize": "^6.6.5"
+    "sequelize": "^6.6.5",
+    "xss": "^1.0.9"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
