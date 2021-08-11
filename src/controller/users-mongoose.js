@@ -2,25 +2,16 @@ const { Users } = require('../db')
 
 // 获取用户列表
 const handleGetUserList = async id => {
-  let result
   if (id) {
-    result = await Users.findAll({
-      where: {
-        id
-      }
-    })
+    return await Users.find({ id }).sort({ _id: -1 })
   } else {
-    result = await Users.findAll()
+    return await Users.find().sort({ _id: -1 })
   }
-  return result
 }
 
 // 获取用户详情
 const handleGetUserDetail = async id => {
-  const result = await Users.findAll({
-    where: { id: id ? id : '' }
-  })
-  return result?.[0]
+  return await Users.findById(id)
 }
 
 // 添加用户
@@ -30,29 +21,33 @@ const handleAddUser = async ({ name, sex, age }) => {
     sex,
     age
   })
-  return result?.dataValues?.id
+  return result?._id
 }
 
 // 删除用户
 const handleDelUser = async id => {
-  return await Users.destroy({
-    where: {
-      id
-    }
-  })
+  const result = await Users.findOneAndDelete({ _id: id })
+  if (result?._id) {
+    return true
+  }
+  return false
 }
 
 // 修改用户
 const handleSetUser = async ({ id, name, sex, age }) => {
-  return await Users.update({
+  const result = await Users.findOneAndUpdate({
+    _id: id // 条件
+  }, {
     name,
     sex,
     age
   }, {
-    where: {
-      id
-    }
+    new: true // 返回修改之后的最新的内容
   })
+  if (result?._id) {
+    return true
+  }
+  return false
 }
 
 module.exports = {

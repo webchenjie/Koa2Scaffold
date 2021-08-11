@@ -5,11 +5,11 @@ const connection = mysql.createConnection(mysqlConfig)
 
 const handleMysqlExec = sql => {
   return new Promise((resolve, reject) => {
-    connection.query(sql, (err, results) => {
+    connection.query(sql, (err, result) => {
       if (err) {
         reject(err)
       }
-      resolve(results)
+      resolve(result)
     })
   })
 }

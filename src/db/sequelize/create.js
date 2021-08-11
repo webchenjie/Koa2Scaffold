@@ -9,9 +9,9 @@ const sequelize = new Sequelize(
 )
 
 sequelize.authenticate().then(() => {
-  console.log('连接成功~')
+  console.log('sequelize 连接成功~')
 }).catch(() => {
-  console.log('连接失败~')
+  console.log('sequelize 连接失败~')
 })
 
 module.exports = sequelize

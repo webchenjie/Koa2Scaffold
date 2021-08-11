@@ -1,5 +1,6 @@
 module.exports = {
   ...require('./mysql'),
   ...require('./sequelize'),
-  ...require('./mongodb')
+  ...require('./mongodb'),
+  ...require('./mongoose')
 }
