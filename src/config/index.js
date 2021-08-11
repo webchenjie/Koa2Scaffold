@@ -1,9 +1,11 @@
 const mysqlConfig = require('./mysql')
 const sequelizeConfig = require('./sequelize')
+const mongodbConfig = require('./mongodb')
 
 const config = {
   mysqlConfig, // mysql 配置
   sequelizeConfig, // sequelize 配置
+  mongodbConfig, // mongodb 配置
   apiPrefix: '/api', // API 前缀
   viewPrefix: '/view', // View 前缀
   httpPort: '10240', // HTTP 端口

@@ -2,26 +2,25 @@ const { Users } = require('../db')
 
 // 获取用户列表
 const handleGetUserList = async id => {
-  let data
+  let result
   if (id) {
-    data = await Users.findAll({
+    result = await Users.findAll({
       where: {
         id
       }
     })
   } else {
-    data = await Users.findAll()
+    result = await Users.findAll()
   }
-  return data
+  return result
 }
 
 // 获取用户详情
 const handleGetUserDetail = async id => {
-  const [data] = await Users.findAll({
+  const [result] = await Users.findAll({
     where: { id: id ? id : '' }
   })
-  console.log(data)
-  return data
+  return result
 }
 
 // 添加用户
@@ -36,17 +35,17 @@ const handleAddUser = async ({ name, sex, age }) => {
 
 // 删除用户
 const handleDelUser = async id => {
-  const data = await Users.destroy({
+  const result = await Users.destroy({
     where: {
       id
     }
   })
-  return data
+  return result
 }
 
 // 修改用户
 const handleSetUser = async ({ id, name, sex, age }) => {
-  const data = await Users.update({
+  const result = await Users.update({
     name,
     sex,
     age
@@ -55,7 +54,7 @@ const handleSetUser = async ({ id, name, sex, age }) => {
       id
     }
   })
-  return data
+  return result
 }
 
 module.exports = {

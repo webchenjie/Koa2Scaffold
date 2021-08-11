@@ -16,10 +16,7 @@ const router = new KoaRouter()
 router.prefix(`${apiPrefix}/users`)
 
 // 获取用户列表
-const getListSchema = Joi.object({
-  id: Joi.required().error(new Error('id 不可为空~'))
-})
-router.get('/getList', validateParamsMiddleware(getListSchema), async ctx => {
+router.get('/getList', async ctx => {
   const { id } = ctx.params
   const data = await handleGetUserList(id)
   ctx.body = new SuccessModel({
