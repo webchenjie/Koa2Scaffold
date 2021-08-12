@@ -8,12 +8,7 @@ switch(process.env.NODE_ENV) {
       password: '123456',
       config: {
         host: 'localhost',
-        dialect: 'mysql',
-        pool: {
-          max: 5,
-          min: 0,
-          idle: 10000
-        }
+        dialect: 'mysql'
       }
     }
   case 'production':
@@ -23,12 +18,7 @@ switch(process.env.NODE_ENV) {
       password: '123456',
       config: {
         host: 'localhost',
-        dialect: 'mysql',
-        pool: {
-          max: 5,
-          min: 0,
-          idle: 10000
-        }
+        dialect: 'mysql'
       }
     }
   default:
@@ -38,12 +28,7 @@ switch(process.env.NODE_ENV) {
       password: '123456',
       config: {
         host: 'localhost',
-        dialect: 'mysql',
-        pool: {
-          max: 5,
-          min: 0,
-          idle: 10000
-        }
+        dialect: 'mysql'
       }
     }
 }
