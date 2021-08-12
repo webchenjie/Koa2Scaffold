@@ -1,0 +1,8 @@
+{
+  "name": "Koa2",
+  "version": "1.0.0",
+  "description": "Koa2 接口文档",
+  "title": "Koa2 接口文档",
+  "url" : "http://localhost:10240/api",
+  "sampleUrl" : "http://localhost:10240/api"
+}

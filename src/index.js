@@ -19,7 +19,7 @@ const app = new Koa()
 const koaMiddleware = koaCompose([
   koaCors(), // 自动添加跨域响应头
   koaJson(), // 返回数据 json 格式化
-  koaHelmet(), // 自动添加安全响应头
+  // koaHelmet(), // 自动添加安全响应头
   koaCompress(), // 响应压缩
   koaBody({ // 参数解析
     multipart: true,

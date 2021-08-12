@@ -7,7 +7,24 @@ const router = new KoaRouter()
 
 router.prefix(`${apiPrefix}/upload`)
 
-router.post('/', async ctx => {
+/**
+ * @api {post} /upload/image 上传图片
+ * @apiVersion 1.0.0
+ * @apiName image
+ * @apiGroup 文件管理
+ * @apiHeader {String} Content-Type multipart/form-data
+ * @apiParam {String} file 文件（必填）
+ * @apiSuccess {Number} code 结果标识
+ * @apiSuccess {String} msg 结果说明
+ * @apiSuccess {Object[]} data 结果数据
+ * @apiSuccessExample {json} 成功响应
+ *  {
+      "code": 0,
+      "data": "url",
+      "msg": "上传成功了噢~"
+    }
+ */
+router.post('/image', async ctx => {
   const { file } = ctx.params
   const { header } = ctx.request // 上传的文件在ctx.request.files.file
   if (file) {
