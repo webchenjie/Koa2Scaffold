@@ -1,10 +1,10 @@
 define({ "api": [
   {
     "type": "post",
-    "url": "/upload",
+    "url": "/upload/image",
     "title": "上传图片",
     "version": "1.0.0",
-    "name": "upload",
+    "name": "image",
     "group": "文件管理",
     "header": {
       "fields": {
@@ -70,7 +70,7 @@ define({ "api": [
     "groupTitle": "文件管理",
     "sampleRequest": [
       {
-        "url": "http://localhost:10240/api/upload"
+        "url": "http://localhost:10240/api/upload/image"
       }
     ]
   },
