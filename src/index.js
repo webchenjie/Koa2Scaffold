@@ -11,7 +11,7 @@ const koaViews = require('koa-views')
 const koaOnerror = require('koa-onerror')
 const day = require('dayjs')
 const path = require('path')
-const router = require('./router')
+const router = require('./routers')
 const { mergeParamsMiddleware } = require('./middleware')
 
 const app = new Koa()
