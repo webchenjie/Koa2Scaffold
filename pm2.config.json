@@ -1,6 +1,7 @@
 {
   "apps": {
     "name": "koa2",
+    "version": "1.0.0",
     "script": "bin/www",
     "watch": true,
     "instances": 2,
