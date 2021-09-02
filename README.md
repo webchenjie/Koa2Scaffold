@@ -1,16 +1,30 @@
 # koa2
 
-## Project setup
+### 安装依赖
 ```
 yarn
 ```
 
-### Compiles and hot-reloads for development
+### 生成文档
+```
+yarn doc
+```
+### 本地开发
 ```
 yarn dev
 ```
 
-### Compiles and minifies for production
+### 线上启动
 ```
-yarn prd
+yarn prd:start
+```
+
+### 线上停止
+```
+yarn prd:stop
+```
+
+### 线上删除
+```
+yarn prd:delete
 ```
