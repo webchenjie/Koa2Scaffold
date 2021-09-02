@@ -1,6 +1,6 @@
 let config
 
-switch(process.env.NODE_ENV) {
+switch (process.env.NODE_ENV) {
   case 'development':
     config = {
       database: 'blog',
@@ -11,6 +11,7 @@ switch(process.env.NODE_ENV) {
         dialect: 'mysql'
       }
     }
+    break
   case 'production':
     config = {
       database: 'blog',
@@ -21,6 +22,7 @@ switch(process.env.NODE_ENV) {
         dialect: 'mysql'
       }
     }
+    break
   default:
     config = {
       database: 'blog',

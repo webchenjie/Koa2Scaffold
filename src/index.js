@@ -29,7 +29,7 @@ const koaMiddleware = koaCompose([
     console.log(`${day().format('YYYY-MM-DD HH:mm:ss')}${str}`)
   }),
   koaStatic(path.join(__dirname, '../public')),
-  koaViews(`${__dirname}/views`, { extension: 'ejs' })
+  koaViews(path.join(__dirname, '/views'), { extension: 'ejs' })
 ])
 
 koaOnerror(app) // 自动添加错误响应状态码和响应头

@@ -18,7 +18,7 @@ const handleGetUserList = async id => {
 // 获取用户详情
 const handleGetUserDetail = async id => {
   const result = await Users.findAll({
-    where: { id: id ? id : '' }
+    where: { id: id || '' }
   })
   return result?.[0]
 }

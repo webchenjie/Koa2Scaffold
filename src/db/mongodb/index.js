@@ -8,7 +8,7 @@ const handleMongodbExec = collectionName => {
         reject(error)
       }
       const db = client.db(mongodbConfig.database)
-      collection = db.collection(collectionName)
+      const collection = db.collection(collectionName)
       resolve(collection)
     })
   })

@@ -37,7 +37,7 @@ router.get('/getList', async ctx => {
   const data = await handleGetUserList(id)
   ctx.body = new SuccessModel({
     data,
-    msg: `获取用户信息列表成功了噢~`
+    msg: '获取用户信息列表成功了噢~'
   })
 })
 

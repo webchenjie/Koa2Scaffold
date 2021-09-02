@@ -1,6 +1,6 @@
 let config
 
-switch(process.env.NODE_ENV) {
+switch (process.env.NODE_ENV) {
   case 'development':
     config = {
       host: 'localhost',
@@ -9,6 +9,7 @@ switch(process.env.NODE_ENV) {
       port: '3306',
       database: 'blog'
     }
+    break
   case 'production':
     config = {
       host: 'localhost',
@@ -17,6 +18,7 @@ switch(process.env.NODE_ENV) {
       port: '3306',
       database: 'blog'
     }
+    break
   default:
     config = {
       host: 'localhost',
