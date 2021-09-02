@@ -18,7 +18,7 @@ const config = {
    * 如：koaOnerror(app, { redirect: '/500' })
    * 注意：如果是首页则应该使用 views 中的页面，而不是 public 目录中的页面
    */
-  isSeparation: false
+  isSeparation: true
 }
 
 module.exports = config
