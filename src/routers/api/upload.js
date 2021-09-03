@@ -1,7 +1,14 @@
 const KoaRouter = require('koa-router')
-const { apiPrefix } = require('../../config')
-const { SuccessModel, ErrorModel } = require('../../model')
-const { handleStreamFile } = require('../../controller')
+const {
+  apiPrefix
+} = require('../../config')
+const {
+  SuccessModel,
+  ErrorModel
+} = require('../../model')
+const {
+  handleStreamFile
+} = require('../../controller')
 
 const router = new KoaRouter()
 
@@ -25,8 +32,12 @@ router.prefix(`${apiPrefix}/upload`)
     }
  */
 router.post('/image', async ctx => {
-  const { file } = ctx.params
-  const { header } = ctx.request // 上传的文件在ctx.request.files.file
+  const {
+    file
+  } = ctx.params
+  const {
+    header
+  } = ctx.request // 上传的文件在ctx.request.files.file
   if (file) {
     const data = await handleStreamFile(header, file)
     ctx.body = new SuccessModel({

@@ -12,7 +12,9 @@ const koaOnerror = require('koa-onerror')
 const day = require('dayjs')
 const path = require('path')
 const router = require('./routers')
-const { mergeParamsMiddleware } = require('./middleware')
+const {
+  mergeParamsMiddleware
+} = require('./middleware')
 
 const app = new Koa()
 
@@ -23,13 +25,17 @@ const koaMiddleware = koaCompose([
   koaCompress(), // 响应压缩
   koaBody({ // 参数解析
     multipart: true,
-    formidable: { maxFileSize: 1024 * 1024 * 1024 } // 1G
+    formidable: {
+      maxFileSize: 1024 * 1024 * 1024
+    } // 1G
   }),
   koaLogger(str => { // 本地请求日志
     console.log(`${day().format('YYYY-MM-DD HH:mm:ss')}${str}`)
   }),
   koaStatic(path.join(__dirname, '../public')),
-  koaViews(path.join(__dirname, '/views'), { extension: 'ejs' })
+  koaViews(path.join(__dirname, '/views'), {
+    extension: 'ejs'
+  })
 ])
 
 koaOnerror(app) // 自动添加错误响应状态码和响应头

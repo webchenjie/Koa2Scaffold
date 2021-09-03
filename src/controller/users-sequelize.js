@@ -1,4 +1,6 @@
-const { Users } = require('../db')
+const {
+  Users
+} = require('../db')
 
 // 获取用户列表
 const handleGetUserList = async id => {
@@ -18,13 +20,19 @@ const handleGetUserList = async id => {
 // 获取用户详情
 const handleGetUserDetail = async id => {
   const result = await Users.findAll({
-    where: { id: id || '' }
+    where: {
+      id: id || ''
+    }
   })
   return result?.[0]
 }
 
 // 添加用户
-const handleAddUser = async ({ name, sex, age }) => {
+const handleAddUser = async ({
+  name,
+  sex,
+  age
+}) => {
   const result = await Users.create({
     name,
     sex,
@@ -43,7 +51,12 @@ const handleDelUser = async id => {
 }
 
 // 修改用户
-const handleSetUser = async ({ id, name, sex, age }) => {
+const handleSetUser = async ({
+  id,
+  name,
+  sex,
+  age
+}) => {
   return await Users.update({
     name,
     sex,

@@ -1,4 +1,6 @@
-const { DataTypes } = require('sequelize')
+const {
+  DataTypes
+} = require('sequelize')
 const sequelize = require('./create')
 
 // 创建 users 模型，数据表的名字是 users

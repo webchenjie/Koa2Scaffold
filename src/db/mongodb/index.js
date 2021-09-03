@@ -1,5 +1,7 @@
 const Mongodb = require('mongodb')
-const { mongodbConfig } = require('../../config')
+const {
+  mongodbConfig
+} = require('../../config')
 
 const handleMongodbExec = collectionName => {
   return new Promise((resolve, reject) => {

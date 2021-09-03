@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
-const { mongodbConfig } = require('../../config')
+const {
+  mongodbConfig
+} = require('../../config')
 
 mongoose.connect(`${mongodbConfig.host}/${mongodbConfig.database}`, {
   useNewUrlParser: true,

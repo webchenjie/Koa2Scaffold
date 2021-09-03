@@ -1,11 +1,19 @@
-const { Users } = require('../db')
+const {
+  Users
+} = require('../db')
 
 // 获取用户列表
 const handleGetUserList = async id => {
   if (id) {
-    return await Users.find({ id }).sort({ _id: -1 })
+    return await Users.find({
+      id
+    }).sort({
+      _id: -1
+    })
   } else {
-    return await Users.find().sort({ _id: -1 })
+    return await Users.find().sort({
+      _id: -1
+    })
   }
 }
 
@@ -15,7 +23,11 @@ const handleGetUserDetail = async id => {
 }
 
 // 添加用户
-const handleAddUser = async ({ name, sex, age }) => {
+const handleAddUser = async ({
+  name,
+  sex,
+  age
+}) => {
   const result = await Users.create({
     name,
     sex,
@@ -26,7 +38,9 @@ const handleAddUser = async ({ name, sex, age }) => {
 
 // 删除用户
 const handleDelUser = async id => {
-  const result = await Users.findOneAndDelete({ _id: id })
+  const result = await Users.findOneAndDelete({
+    _id: id
+  })
   if (result?._id) {
     return true
   }
@@ -34,7 +48,12 @@ const handleDelUser = async id => {
 }
 
 // 修改用户
-const handleSetUser = async ({ id, name, sex, age }) => {
+const handleSetUser = async ({
+  id,
+  name,
+  sex,
+  age
+}) => {
   const result = await Users.findOneAndUpdate({
     _id: id // 条件
   }, {

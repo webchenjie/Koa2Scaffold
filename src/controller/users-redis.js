@@ -1,4 +1,8 @@
-const { handleRedisGet, handleRedisSet, handleRedisDel } = require('../db')
+const {
+  handleRedisGet,
+  handleRedisSet,
+  handleRedisDel
+} = require('../db')
 
 // 获取用户列表
 const handleGetUserList = async id => {
@@ -11,8 +15,16 @@ const handleGetUserDetail = async id => {
 }
 
 // 添加用户
-const handleAddUser = async ({ name, sex, age }) => {
-  return await handleRedisSet('user2', JSON.stringify({ name, sex, age }))
+const handleAddUser = async ({
+  name,
+  sex,
+  age
+}) => {
+  return await handleRedisSet('user2', JSON.stringify({
+    name,
+    sex,
+    age
+  }))
 }
 
 // 删除用户
@@ -22,8 +34,17 @@ const handleDelUser = async (id) => {
 }
 
 // 修改用户
-const handleSetUser = async ({ id, name, sex, age }) => {
-  return await handleRedisSet('user1', JSON.stringify({ name, sex, age }))
+const handleSetUser = async ({
+  id,
+  name,
+  sex,
+  age
+}) => {
+  return await handleRedisSet('user1', JSON.stringify({
+    name,
+    sex,
+    age
+  }))
 }
 
 module.exports = {

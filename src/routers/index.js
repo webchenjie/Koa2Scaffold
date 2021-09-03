@@ -1,5 +1,7 @@
 const combineRouters = require('koa-combine-routers')
-const { isSeparation } = require('../config')
+const {
+  isSeparation
+} = require('../config')
 
 const routerList = [
   require('./api/upload'),
